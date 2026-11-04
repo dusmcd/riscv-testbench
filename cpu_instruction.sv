@@ -10,7 +10,7 @@ class CPUInstruction;
     rd != 5'b0;
   }
 
-  function void create_instr_file(input int num);
+  function automatic void create_instr_file(input int num);
     int file = $fopen("tb_instructions.txt", "w")
     if (file == 0)
       $fatal("Could not create file");
@@ -32,7 +32,7 @@ class CPUInstruction;
     $fclose(file);
   endfunction
 
-  function bit [31:0] encode_instr();
+  function automatic bit [31:0] encode_instr();
     bit [31:0] instruction;
     typedef enum bit [1:0] {RTYPE, ITYPE, UTYPE, NO_OPERANDS} instr_type;
     instr_type instr_type_inst;
